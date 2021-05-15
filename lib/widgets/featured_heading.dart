@@ -1,3 +1,4 @@
+import 'package:explore/shared/constant.dart';
 import 'package:explore/widgets/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -23,14 +24,23 @@ class FeaturedHeading extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Row(),
-                Text(
-                  AppLocalizations.of(context)!.placeForRent,
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.location_on,
+                      color: kDefaultBackgroundColor,
+                     size: kIconSize,
+                      semanticLabel: AppLocalizations.of(context)!.placeForRent,
+                    ),
+                    Text(
+                      AppLocalizations.of(context)!.placeForRent,
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontFamily: 'Montserrat',
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 5),
                 Text(
@@ -44,6 +54,12 @@ class FeaturedHeading extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Icon(
+                  Icons.location_on,
+                  color: kDefaultBackgroundColor,
+                  size: kIconSize,
+                  semanticLabel: AppLocalizations.of(context)!.placeForRent,
+                ),
                 Text(
                   AppLocalizations.of(context)!.placeForRent,
                   style: TextStyle(

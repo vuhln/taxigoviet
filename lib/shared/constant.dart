@@ -7,3 +7,4 @@ const kTextColor = Color(0xFF242424);
 const kDarkButton = Color(0xFF372930);
 const kDefaultBackgroundColor = Color(0xFF43A047);
 const kDateTimeFormat = "yyyy-MM-dd HH:mm";
+const kIconSize = 55.0;

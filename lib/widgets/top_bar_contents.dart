@@ -27,7 +27,7 @@ class _TopBarContentsState extends State<TopBarContents> {
   @override
   Widget build(BuildContext context) {
     var screenSize = MediaQuery.of(context).size;
-
+    var ratio = 30;
     return PreferredSize(
       preferredSize: Size(screenSize.width, 1000),
       child: Container(
@@ -90,7 +90,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                           ],
                         ),
                       ),
-                      SizedBox(width: screenSize.width / 20),
+                      SizedBox(width: screenSize.width / ratio),
                       InkWell(
                         onHover: (value) {
                           setState(() {
@@ -128,7 +128,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                           ],
                         ),
                       ),
-                      SizedBox(width: screenSize.width / 20),
+                      SizedBox(width: screenSize.width / ratio),
                       InkWell(
                         onHover: (value) {
                           setState(() {
@@ -166,7 +166,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                           ],
                         ),
                       ),
-                      SizedBox(width: screenSize.width / 20),
+                      SizedBox(width: screenSize.width / ratio),
                       InkWell(
                         onHover: (value) {
                           setState(() {
@@ -202,7 +202,7 @@ class _TopBarContentsState extends State<TopBarContents> {
                           ],
                         ),
                       ),
-                      SizedBox(width: screenSize.width / 20),
+                      SizedBox(width: screenSize.width / ratio),
                       InkWell(
                         onHover: (value) {
                           setState(() {

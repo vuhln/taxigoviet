@@ -1,5 +1,7 @@
+import 'package:explore/models/car_info.dart';
 import 'package:explore/widgets/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FloatingQuickAccessBar extends StatefulWidget {
   const FloatingQuickAccessBar({
@@ -14,20 +16,25 @@ class FloatingQuickAccessBar extends StatefulWidget {
 }
 
 class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
-  List _isHovering = [false, false, false, false];
+  late List _isHovering = [];
   List<Widget> rowElements = [];
 
-  List<String> items = ['Destination', 'Dates', 'People', 'Experience'];
-  List<IconData> icons = [
-    Icons.location_on,
-    Icons.date_range,
-    Icons.people,
-    Icons.wb_sunny
-  ];
+  List<CarInfo> fetchCarItems(BuildContext context) {
+    return [
+      CarInfo(
+          AppLocalizations.of(context)!.car4SeatSmall, Icons.directions_car),
+      CarInfo(
+          AppLocalizations.of(context)!.car4SeatMedium, Icons.directions_car),
+      CarInfo(AppLocalizations.of(context)!.car7Seat, Icons.directions_car),
+      CarInfo(AppLocalizations.of(context)!.car16Seat, Icons.directions_car),
+      CarInfo(AppLocalizations.of(context)!.car29Seat, Icons.directions_car),
+      CarInfo(AppLocalizations.of(context)!.car45Seat, Icons.directions_car),
+    ];
+  }
 
-  List<Widget> generateRowElements() {
+  List<Widget> generateRowElements(List<CarInfo> carItems) {
     rowElements.clear();
-    for (int i = 0; i < items.length; i++) {
+    for (int i = 0; i < carItems.length; i++) {
       Widget elementTile = InkWell(
         splashColor: Colors.transparent,
         hoverColor: Colors.transparent,
@@ -38,7 +45,7 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
         },
         onTap: () {},
         child: Text(
-          items[i],
+          carItems[i].title,
           style: TextStyle(
             color: _isHovering[i] ? Colors.blueGrey[900] : Colors.blueGrey,
           ),
@@ -53,7 +60,7 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
         ),
       );
       rowElements.add(elementTile);
-      if (i < items.length - 1) {
+      if (i < carItems.length - 1) {
         rowElements.add(spacer);
       }
     }
@@ -63,6 +70,9 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
 
   @override
   Widget build(BuildContext context) {
+    var carItems = fetchCarItems(context);
+    double elevation = carItems.length.toDouble();
+    _isHovering = List.filled(carItems.length, false).toList();
     return Center(
       heightFactor: 1,
       child: Padding(
@@ -78,12 +88,12 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
         child: ResponsiveWidget.isSmallScreen(context)
             ? Column(
                 children: [
-                  ...Iterable<int>.generate(items.length).map(
+                  ...Iterable<int>.generate(carItems.length).map(
                     (int pageIndex) => Padding(
                       padding:
                           EdgeInsets.only(top: widget.screenSize.height / 80),
                       child: Card(
-                        elevation: 4,
+                        elevation: elevation,
                         child: Padding(
                           padding: EdgeInsets.only(
                               top: widget.screenSize.height / 45,
@@ -92,7 +102,7 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
                           child: Row(
                             children: [
                               Icon(
-                                icons[pageIndex],
+                                carItems[pageIndex].iconData,
                                 color: Colors.blueGrey,
                               ),
                               SizedBox(width: widget.screenSize.width / 20),
@@ -101,7 +111,7 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
                                 hoverColor: Colors.transparent,
                                 onTap: () {},
                                 child: Text(
-                                  items[pageIndex],
+                                  carItems[pageIndex].title,
                                   style: TextStyle(
                                       color: Colors.blueGrey, fontSize: 16),
                                 ),
@@ -123,7 +133,7 @@ class _FloatingQuickAccessBarState extends State<FloatingQuickAccessBar> {
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: generateRowElements(),
+                    children: generateRowElements(carItems),
                   ),
                 ),
               ),

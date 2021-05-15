@@ -70,41 +70,42 @@ class FeaturedTiles extends StatelessWidget {
               left: screenSize.width / 15,
               right: screenSize.width / 15,
             ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ...Iterable<int>.generate(pickupPlaces.length).map(
-                  (int pageIndex) => Column(
+            child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SizedBox(
-                        height: screenSize.width / 6,
-                        width: screenSize.width / 3.8,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(5.0),
-                          child: Image.asset(
-                            pickupPlaces[pageIndex].assetName,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          top: screenSize.height / 70,
-                        ),
-                        child: Text(
-                          pickupPlaces[pageIndex].title,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+                      ...Iterable<int>.generate(pickupPlaces.length)
+                          .map((int pageIndex) => Container(
+                              padding: EdgeInsets.all(5),
+                              child: Column(
+                                children: [
+                                  SizedBox(
+                                    height: screenSize.width / 6,
+                                    width: screenSize.width / 3.8,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(5.0),
+                                      child: Image.asset(
+                                        pickupPlaces[pageIndex].assetName,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                        top: screenSize.height / 70),
+                                    child: Text(
+                                      pickupPlaces[pageIndex].title,
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        fontFamily: 'Montserrat',
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ))),
+                    ])),
           );
   }
 }

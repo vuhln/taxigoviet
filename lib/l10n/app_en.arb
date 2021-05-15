@@ -45,6 +45,7 @@
     "airportTaxiCheap": "Taxi sân bay giá rẻ",
     "email": "taxigoviet@gmail.com",
     "address": "Địa chỉ",
-    "currentAddress" :"41/17 TL29 P Thạnh Lộc Quận 12"
+    "currentAddress" :"41/17 TL29 P Thạnh Lộc Quận 12",
+    "copyright": "Copyright © 2021 | Taxi GOVIET"
 
 }

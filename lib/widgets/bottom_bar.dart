@@ -52,12 +52,12 @@ class BottomBar extends StatelessWidget {
                 SizedBox(height: 20),
                 InfoText(
                   type: 'Email',
-                  text: 'explore@gmail.com',
+                  text: AppLocalizations.of(context)!.email,
                 ),
                 SizedBox(height: 5),
                 InfoText(
-                  type: 'Address',
-                  text: '128, Trymore Road, Delft, MN - 56124',
+                  type: AppLocalizations.of(context)!.address,
+                  text: AppLocalizations.of(context)!.currentAddress,
                 ),
                 SizedBox(height: 20),
                 Divider(
@@ -65,7 +65,7 @@ class BottomBar extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'Copyright © 2020 | EXPLORE',
+                  AppLocalizations.of(context)!.copyright,
                   style: TextStyle(
                     color: Colors.blueGrey.shade300,
                     fontSize: 14,
@@ -137,7 +137,7 @@ class BottomBar extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Text(
-                  'Copyright © 2021 | Taxi GOVIET',
+                  AppLocalizations.of(context)!.copyright,
                   style: TextStyle(
                     color: Colors.blueGrey.shade300,
                     fontSize: 14,

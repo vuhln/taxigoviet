@@ -1,3 +1,5 @@
+import 'package:explore/widgets/about_us.dart';
+import 'package:explore/widgets/booking_component.dart';
 import 'package:explore/widgets/bottom_bar.dart';
 import 'package:explore/widgets/call_app_bar.dart';
 import 'package:explore/widgets/carousel.dart';
@@ -84,6 +86,7 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         child: Column(
                           children: [
+                            AboutUs(),
                             FeaturedHeading(
                               screenSize: screenSize,
                             ),
